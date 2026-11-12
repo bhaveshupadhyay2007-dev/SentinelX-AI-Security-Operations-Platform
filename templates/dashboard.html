@@ -10,10 +10,7 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>
-        SentinelX | Security Operations Center
-    </title>
-
+    <title>SentinelX | Security Operations Center</title>
 
     <style>
 
@@ -23,667 +20,692 @@
             padding: 0;
         }
 
-
         body {
-
             font-family:
+                Inter,
                 Arial,
-                Helvetica,
                 sans-serif;
 
-            background: #07111f;
+            background:
+                #070b12;
 
-            color: #e5e7eb;
+            color:
+                #e5e7eb;
 
-            min-height: 100vh;
-
+            min-height:
+                100vh;
         }
 
+        .container {
+            width:
+                92%;
 
-        .header {
+            max-width:
+                1400px;
 
-            background: #0b1628;
+            margin:
+                auto;
+        }
 
+        header {
             border-bottom:
-                1px solid #1e293b;
+                1px solid #1f2937;
 
-            padding:
-                20px 40px;
+            background:
+                #0a0f18;
+        }
 
-            display: flex;
+        .header-inner {
+            min-height:
+                76px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
 
             justify-content:
                 space-between;
-
-            align-items: center;
-
         }
 
+        .brand {
+            display:
+                flex;
 
-        .logo {
+            align-items:
+                center;
 
-            font-size: 25px;
-
-            font-weight: bold;
-
-            color: #38bdf8;
-
+            gap:
+                12px;
         }
 
+        .brand-icon {
+            width:
+                42px;
 
-        .subtitle {
-
-            color: #94a3b8;
-
-            font-size: 13px;
-
-            margin-top: 4px;
-
-        }
-
-
-        .header-right {
-
-            text-align: right;
-
-        }
-
-
-        .system-status {
-
-            color: #4ade80;
-
-            font-size: 13px;
-
-            font-weight: bold;
-
-        }
-
-
-        .nav {
-
-            margin-top: 8px;
-
-        }
-
-
-        .nav a {
-
-            color: #cbd5e1;
-
-            text-decoration: none;
-
-            margin-left: 20px;
-
-            font-size: 13px;
-
-        }
-
-
-        .nav a:hover {
-
-            color: #38bdf8;
-
-        }
-
-
-        .container {
-
-            width: 92%;
-
-            max-width: 1400px;
-
-            margin: 35px auto;
-
-        }
-
-
-        .stats {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(4, 1fr);
-
-            gap: 18px;
-
-            margin-bottom: 25px;
-
-        }
-
-
-        .stat-card {
-
-            background: #0b1628;
+            height:
+                42px;
 
             border:
-                1px solid #1e293b;
+                1px solid #334155;
 
-            border-radius: 12px;
+            border-radius:
+                10px;
 
-            padding: 22px;
+            display:
+                flex;
 
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            background:
+                #111827;
+
+            font-size:
+                21px;
         }
 
+        .brand h1 {
+            font-size:
+                21px;
 
-        .stat-label {
-
-            color: #94a3b8;
-
-            font-size: 12px;
-
-            margin-bottom: 10px;
-
+            letter-spacing:
+                .5px;
         }
 
+        .brand span {
+            color:
+                #64748b;
 
-        .stat-value {
-
-            font-size: 28px;
-
-            font-weight: bold;
-
+            font-size:
+                12px;
         }
 
+        nav {
+            display:
+                flex;
 
-        .blue {
-            color: #38bdf8;
+            gap:
+                8px;
         }
 
+        nav a {
+            text-decoration:
+                none;
 
-        .red {
-            color: #ef4444;
+            color:
+                #94a3b8;
+
+            padding:
+                9px 13px;
+
+            border-radius:
+                7px;
+
+            font-size:
+                13px;
         }
 
+        nav a:hover,
+        nav a.active {
+            background:
+                #111827;
 
-        .yellow {
-            color: #facc15;
+            color:
+                #f8fafc;
         }
 
+        .status {
+            display:
+                flex;
 
-        .green {
-            color: #4ade80;
+            align-items:
+                center;
+
+            gap:
+                7px;
+
+            color:
+                #94a3b8;
+
+            font-size:
+                12px;
         }
 
+        .status-dot {
+            width:
+                8px;
+
+            height:
+                8px;
+
+            border-radius:
+                50%;
+
+            background:
+                #22c55e;
+        }
+
+        main {
+            padding:
+                30px 0 50px;
+        }
+
+        .page-title {
+            margin-bottom:
+                24px;
+        }
+
+        .page-title h2 {
+            font-size:
+                27px;
+
+            margin-bottom:
+                7px;
+        }
+
+        .page-title p {
+            color:
+                #64748b;
+
+            font-size:
+                13px;
+        }
+
+        .cards {
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(5, 1fr);
+
+            gap:
+                14px;
+
+            margin-bottom:
+                22px;
+        }
 
         .card {
-
-            background: #0b1628;
-
-            border:
-                1px solid #1e293b;
-
-            border-radius: 12px;
-
-            padding: 25px;
-
-            margin-bottom: 25px;
-
-        }
-
-
-        .card-title {
-
-            font-size: 18px;
-
-            font-weight: bold;
-
-            margin-bottom: 18px;
-
-        }
-
-
-        .scanner {
-
-            display: flex;
-
-            gap: 12px;
-
-        }
-
-
-        .scanner input {
-
-            flex: 1;
-
-            background: #07111f;
+            background:
+                #0d131d;
 
             border:
-                1px solid #334155;
+                1px solid #1f2937;
 
-            color: #e5e7eb;
+            border-radius:
+                11px;
 
             padding:
-                14px 16px;
-
-            border-radius: 8px;
-
-            font-size: 14px;
-
-            outline: none;
-
+                19px;
         }
 
+        .card-label {
+            color:
+                #64748b;
 
-        .scanner input:focus {
+            font-size:
+                11px;
 
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                1px;
+
+            margin-bottom:
+                10px;
+        }
+
+        .card-value {
+            font-size:
+                28px;
+
+            font-weight:
+                700;
+        }
+
+        .card-sub {
+            color:
+                #64748b;
+
+            font-size:
+                11px;
+
+            margin-top:
+                5px;
+        }
+
+        .layout {
+            display:
+                grid;
+
+            grid-template-columns:
+                1.4fr .8fr;
+
+            gap:
+                18px;
+
+            margin-bottom:
+                20px;
+        }
+
+        .panel {
+            background:
+                #0d131d;
+
+            border:
+                1px solid #1f2937;
+
+            border-radius:
+                11px;
+
+            padding:
+                21px;
+        }
+
+        .panel-title {
+            font-size:
+                15px;
+
+            font-weight:
+                600;
+
+            margin-bottom:
+                5px;
+        }
+
+        .panel-subtitle {
+            color:
+                #64748b;
+
+            font-size:
+                11px;
+
+            margin-bottom:
+                18px;
+        }
+
+        textarea {
+            width:
+                100%;
+
+            min-height:
+                145px;
+
+            resize:
+                vertical;
+
+            background:
+                #080d15;
+
+            border:
+                1px solid #263244;
+
+            border-radius:
+                8px;
+
+            color:
+                #e5e7eb;
+
+            padding:
+                14px;
+
+            outline:
+                none;
+
+            font-family:
+                Consolas,
+                monospace;
+
+            font-size:
+                13px;
+        }
+
+        textarea:focus {
             border-color:
-                #38bdf8;
-
+                #475569;
         }
 
+        button {
+            margin-top:
+                12px;
 
-        .scan-button {
+            border:
+                0;
 
-            background: #0284c7;
-
-            border: none;
-
-            color: white;
+            border-radius:
+                7px;
 
             padding:
-                14px 24px;
+                11px 18px;
 
-            border-radius: 8px;
+            background:
+                #e5e7eb;
 
-            cursor: pointer;
+            color:
+                #0f172a;
 
-            font-weight: bold;
+            font-weight:
+                700;
 
+            cursor:
+                pointer;
         }
 
-
-        .scan-button:hover {
-
-            background: #0369a1;
-
+        button:hover {
+            background:
+                #ffffff;
         }
-
-
-        .scan-button:disabled {
-
-            opacity: 0.6;
-
-            cursor: wait;
-
-        }
-
 
         .result {
+            margin-top:
+                17px;
 
-            display: none;
-
-            margin-top: 25px;
-
+            display:
+                none;
         }
 
-
         .result-grid {
-
-            display: grid;
+            display:
+                grid;
 
             grid-template-columns:
                 repeat(4, 1fr);
 
-            gap: 15px;
+            gap:
+                10px;
 
+            margin-bottom:
+                14px;
         }
 
-
-        .result-item {
-
-            background: #07111f;
+        .result-box {
+            background:
+                #080d15;
 
             border:
-                1px solid #1e293b;
+                1px solid #1f2937;
 
-            border-radius: 8px;
+            border-radius:
+                8px;
 
-            padding: 16px;
-
+            padding:
+                13px;
         }
 
+        .result-box small {
+            display:
+                block;
 
-        .result-label {
+            color:
+                #64748b;
 
-            color: #64748b;
+            font-size:
+                10px;
 
-            font-size: 11px;
-
-            text-transform: uppercase;
-
-            margin-bottom: 7px;
-
+            margin-bottom:
+                6px;
         }
 
-
-        .result-value {
-
-            font-size: 18px;
-
-            font-weight: bold;
-
+        .result-box strong {
+            font-size:
+                15px;
         }
-
 
         .summary {
-
-            margin-top: 18px;
-
-            background: #07111f;
-
-            border:
-                1px solid #1e293b;
-
-            border-radius: 8px;
-
-            padding: 18px;
-
-        }
-
-
-        .summary-title {
-
-            color: #94a3b8;
-
-            font-size: 12px;
-
-            margin-bottom: 8px;
-
-        }
-
-
-        .summary-text {
-
-            color: #cbd5e1;
-
-            line-height: 1.6;
-
-        }
-
-
-        .indicators {
-
-            margin-top: 18px;
-
-        }
-
-
-        .indicator {
-
-            padding: 10px 12px;
-
-            margin-bottom: 7px;
-
-            background: #111e32;
-
-            border-radius: 6px;
-
-            color: #cbd5e1;
-
-            font-size: 13px;
-
-        }
-
-
-        .threat-intel {
-
-            display: none;
-
-            margin-top: 20px;
-
-            border:
-                1px solid #ef4444;
-
             background:
-                rgba(127, 29, 29, 0.20);
+                #080d15;
 
-            border-radius: 10px;
+            border:
+                1px solid #1f2937;
 
-            padding: 20px;
+            border-radius:
+                8px;
 
+            padding:
+                14px;
+
+            color:
+                #94a3b8;
+
+            font-size:
+                12px;
+
+            line-height:
+                1.6;
         }
 
+        .bars {
+            display:
+                flex;
 
-        .intel-title {
+            flex-direction:
+                column;
 
-            color: #ef4444;
-
-            font-weight: bold;
-
-            font-size: 16px;
-
-            margin-bottom: 15px;
-
+            gap:
+                14px;
         }
 
-
-        .intel-grid {
-
-            display: grid;
+        .bar-row {
+            display:
+                grid;
 
             grid-template-columns:
-                repeat(2, 1fr);
+                70px 1fr 35px;
 
-            gap: 12px;
+            align-items:
+                center;
 
+            gap:
+                9px;
+
+            font-size:
+                11px;
+
+            color:
+                #94a3b8;
         }
 
-
-        .intel-item {
+        .bar {
+            height:
+                9px;
 
             background:
-                rgba(7, 17, 31, 0.8);
+                #111827;
 
-            border:
-                1px solid #334155;
+            border-radius:
+                10px;
 
-            border-radius: 7px;
-
-            padding: 13px;
-
+            overflow:
+                hidden;
         }
 
+        .bar-fill {
+            height:
+                100%;
 
-        .intel-label {
-
-            color: #64748b;
-
-            font-size: 11px;
-
-            text-transform: uppercase;
-
-            margin-bottom: 5px;
-
-        }
-
-
-        .intel-value {
-
-            color: #e5e7eb;
-
-            font-size: 13px;
-
-        }
-
-
-        .no-threat {
-
-            display: none;
-
-            margin-top: 20px;
+            width:
+                0%;
 
             background:
-                rgba(20, 83, 45, 0.18);
+                #64748b;
 
-            border:
-                1px solid #166534;
+            border-radius:
+                10px;
 
-            border-radius: 10px;
-
-            padding: 17px;
-
-            color: #4ade80;
-
-            font-size: 14px;
-
+            transition:
+                width .5s ease;
         }
 
-
-        .links {
-
-            display: grid;
+        .incident-grid {
+            display:
+                grid;
 
             grid-template-columns:
-                repeat(2, 1fr);
+                repeat(3, 1fr);
 
-            gap: 18px;
-
+            gap:
+                10px;
         }
 
-
-        .link-card {
-
-            background: #0b1628;
+        .incident-box {
+            background:
+                #080d15;
 
             border:
-                1px solid #1e293b;
+                1px solid #1f2937;
 
-            border-radius: 12px;
+            border-radius:
+                8px;
 
-            padding: 22px;
-
-            text-decoration: none;
-
-            color: #e5e7eb;
-
-            transition: 0.2s;
-
+            padding:
+                16px;
         }
 
+        .incident-box small {
+            display:
+                block;
 
-        .link-card:hover {
+            color:
+                #64748b;
+
+            font-size:
+                10px;
+
+            margin-bottom:
+                7px;
+        }
+
+        .incident-box strong {
+            font-size:
+                23px;
+        }
+
+        .quick-links {
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap:
+                12px;
+
+            margin-top:
+                20px;
+        }
+
+        .quick-link {
+            text-decoration:
+                none;
+
+            color:
+                #cbd5e1;
+
+            background:
+                #0d131d;
+
+            border:
+                1px solid #1f2937;
+
+            border-radius:
+                9px;
+
+            padding:
+                16px;
+
+            transition:
+                .2s;
+        }
+
+        .quick-link:hover {
+            background:
+                #111827;
 
             border-color:
-                #38bdf8;
-
-            transform:
-                translateY(-2px);
-
+                #334155;
         }
 
+        .quick-link strong {
+            display:
+                block;
 
-        .link-title {
+            margin-bottom:
+                5px;
 
-            color: #38bdf8;
-
-            font-weight: bold;
-
-            margin-bottom: 7px;
-
+            font-size:
+                13px;
         }
 
+        .quick-link span {
+            color:
+                #64748b;
 
-        .link-description {
-
-            color: #94a3b8;
-
-            font-size: 13px;
-
+            font-size:
+                11px;
         }
-
 
         .error {
+            color:
+                #f87171;
 
-            margin-top: 15px;
+            font-size:
+                12px;
 
-            color: #ef4444;
-
-            font-size: 13px;
-
+            margin-top:
+                10px;
         }
 
+        @media (max-width: 1050px) {
 
-        @media (max-width: 900px) {
-
-            .stats {
-
+            .cards {
                 grid-template-columns:
-                    repeat(2, 1fr);
-
+                    repeat(3, 1fr);
             }
 
-
-            .result-grid {
-
+            .layout {
                 grid-template-columns:
-                    repeat(2, 1fr);
-
+                    1fr;
             }
 
         }
 
+        @media (max-width: 700px) {
 
-        @media (max-width: 650px) {
+            .header-inner {
+                flex-direction:
+                    column;
 
-            .header {
+                align-items:
+                    flex-start;
 
                 padding:
-                    18px 20px;
-
+                    15px 0;
             }
 
-
-            .header-right {
-
-                display: none;
-
+            nav {
+                flex-wrap:
+                    wrap;
             }
 
-
-            .container {
-
-                width: 95%;
-
-            }
-
-
-            .stats {
-
+            .cards {
                 grid-template-columns:
-                    1fr;
-
+                    repeat(2, 1fr);
             }
-
-
-            .scanner {
-
-                flex-direction: column;
-
-            }
-
 
             .result-grid {
-
                 grid-template-columns:
-                    1fr;
-
+                    repeat(2, 1fr);
             }
 
-
-            .intel-grid {
-
+            .quick-links {
                 grid-template-columns:
                     1fr;
-
-            }
-
-
-            .links {
-
-                grid-template-columns:
-                    1fr;
-
             }
 
         }
@@ -695,806 +717,771 @@
 
 <body>
 
+<header>
 
-    <header class="header">
+    <div class="container header-inner">
 
-        <div>
+        <div class="brand">
 
-            <div class="logo">
-                ◈ SentinelX
+            <div class="brand-icon">
+                🛡
             </div>
 
-            <div class="subtitle">
-                AI-Powered Security Operations & Threat Detection Platform
+            <div>
+
+                <h1>SentinelX</h1>
+
+                <span>
+                    AI-Powered Security Operations Platform
+                </span>
+
             </div>
 
         </div>
 
 
-        <div class="header-right">
+        <nav>
 
-            <div class="system-status">
-                ● Detection Engine Online
-            </div>
+            <a
+                href="/"
+                class="active"
+            >
+                Dashboard
+            </a>
+
+            <a href="/scanner">
+                Multi-IOC Scanner
+            </a>
+
+            <a href="/history">
+                Scan History
+            </a>
+
+            <a href="/incidents">
+                Incidents
+            </a>
+
+        </nav>
 
 
-            <nav class="nav">
+        <div class="status">
 
-                <a href="/">
-                    Dashboard
-                </a>
+            <span class="status-dot"></span>
 
-                <a href="/history">
-                    Scan History
-                </a>
-
-                <a href="/incidents">
-                    Incidents
-                </a>
-
-            </nav>
+            Detection Engine Online
 
         </div>
 
-    </header>
+    </div>
+
+</header>
 
 
-    <main class="container">
+<main class="container">
+
+    <div class="page-title">
+
+        <h2>
+            Security Operations Center
+        </h2>
+
+        <p>
+            Monitor IOC detection, risk intelligence and security incidents.
+        </p>
+
+    </div>
 
 
-        <!-- STATISTICS -->
+    <!-- ANALYTICS CARDS -->
 
-        <section class="stats">
+    <section class="cards">
+
+        <div class="card">
+
+            <div class="card-label">
+                Total Scans
+            </div>
+
+            <div
+                class="card-value"
+                id="totalScans"
+            >
+                —
+            </div>
+
+            <div class="card-sub">
+                All analyzed indicators
+            </div>
+
+        </div>
 
 
-            <div class="stat-card">
+        <div class="card">
 
-                <div class="stat-label">
-                    TOTAL SCANS
-                </div>
+            <div class="card-label">
+                Threats Detected
+            </div>
 
-                <div
-                    id="totalScans"
-                    class="stat-value blue"
-                >
-                    0
-                </div>
+            <div
+                class="card-value"
+                id="threatsDetected"
+            >
+                —
+            </div>
 
+            <div class="card-sub">
+                Suspicious + malicious
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-label">
+                Alerts
+            </div>
+
+            <div
+                class="card-value"
+                id="alerts"
+            >
+                —
+            </div>
+
+            <div class="card-sub">
+                Analyst attention required
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-label">
+                Open Incidents
+            </div>
+
+            <div
+                class="card-value"
+                id="openIncidents"
+            >
+                —
+            </div>
+
+            <div class="card-sub">
+                Active investigations
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-label">
+                Average Risk
+            </div>
+
+            <div
+                class="card-value"
+                id="averageRisk"
+            >
+                —
+            </div>
+
+            <div class="card-sub">
+                Risk score / 100
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="layout">
+
+
+        <!-- IOC ANALYZER -->
+
+        <div class="panel">
+
+            <div class="panel-title">
+                IOC Quick Analysis
+            </div>
+
+            <div class="panel-subtitle">
+                Analyze a URL, domain or IP address.
             </div>
 
 
-            <div class="stat-card">
-
-                <div class="stat-label">
-                    THREATS DETECTED
-                </div>
-
-                <div
-                    id="threatsDetected"
-                    class="stat-value red"
-                >
-                    0
-                </div>
-
-            </div>
+            <textarea
+                id="iocInput"
+                placeholder="Example:
+https://example.com
+http://verify-user-account.top/password
+192.168.1.10"
+            ></textarea>
 
 
-            <div class="stat-card">
-
-                <div class="stat-label">
-                    OPEN INCIDENTS
-                </div>
-
-                <div
-                    id="openIncidents"
-                    class="stat-value yellow"
-                >
-                    0
-                </div>
-
-            </div>
-
-
-            <div class="stat-card">
-
-                <div class="stat-label">
-                    SYSTEM STATUS
-                </div>
-
-                <div class="stat-value green">
-                    ONLINE
-                </div>
-
-            </div>
-
-
-        </section>
-
-
-        <!-- SCANNER -->
-
-        <section class="card">
-
-
-            <div class="card-title">
-                IOC Security Scanner
-            </div>
-
-
-            <div class="scanner">
-
-                <input
-                    id="iocInput"
-                    type="text"
-                    placeholder="Enter URL, IP address, domain or other IOC..."
-                >
-
-
-                <button
-                    id="scanButton"
-                    class="scan-button"
-                    onclick="analyzeIOC()"
-                >
-                    Analyze IOC
-                </button>
-
-            </div>
+            <button
+                onclick="analyzeIOC()"
+            >
+                Analyze IOC
+            </button>
 
 
             <div
-                id="scanError"
+                id="error"
                 class="error"
             ></div>
 
 
-            <!-- RESULT -->
-
             <div
-                id="result"
                 class="result"
+                id="result"
             >
-
 
                 <div class="result-grid">
 
+                    <div class="result-box">
 
-                    <div class="result-item">
+                        <small>
+                            CLASSIFICATION
+                        </small>
 
-                        <div class="result-label">
-                            Classification
-                        </div>
-
-                        <div
-                            id="classification"
-                            class="result-value"
-                        >
-                            -
-                        </div>
+                        <strong id="classification">
+                            —
+                        </strong>
 
                     </div>
 
 
-                    <div class="result-item">
+                    <div class="result-box">
 
-                        <div class="result-label">
-                            Risk Score
-                        </div>
+                        <small>
+                            RISK SCORE
+                        </small>
 
-                        <div
-                            id="riskScore"
-                            class="result-value"
-                        >
-                            -
-                        </div>
+                        <strong id="riskScore">
+                            —
+                        </strong>
 
                     </div>
 
 
-                    <div class="result-item">
+                    <div class="result-box">
 
-                        <div class="result-label">
-                            Severity
-                        </div>
+                        <small>
+                            SEVERITY
+                        </small>
 
-                        <div
-                            id="severity"
-                            class="result-value"
-                        >
-                            -
-                        </div>
+                        <strong id="severity">
+                            —
+                        </strong>
 
                     </div>
 
 
-                    <div class="result-item">
+                    <div class="result-box">
 
-                        <div class="result-label">
-                            Decision
-                        </div>
+                        <small>
+                            DECISION
+                        </small>
 
-                        <div
-                            id="decision"
-                            class="result-value"
-                        >
-                            -
-                        </div>
+                        <strong id="decision">
+                            —
+                        </strong>
 
                     </div>
-
 
                 </div>
 
-
-                <!-- SUMMARY -->
 
                 <div class="summary">
 
-                    <div class="summary-title">
-                        ANALYSIS SUMMARY
-                    </div>
+                    <strong>
+                        Analysis Summary
+                    </strong>
 
-                    <div
-                        id="summary"
-                        class="summary-text"
-                    ></div>
+                    <br>
 
-                </div>
-
-
-                <!-- INDICATORS -->
-
-                <div class="indicators">
-
-                    <div class="summary-title">
-                        WHY WAS IT FLAGGED?
-                    </div>
-
-                    <div id="indicators"></div>
+                    <span id="summary">
+                        —
+                    </span>
 
                 </div>
-
-
-                <!-- THREAT INTELLIGENCE -->
-
-                <div
-                    id="threatIntel"
-                    class="threat-intel"
-                >
-
-                    <div class="intel-title">
-                        ⚠ KNOWN THREAT DETECTED
-                    </div>
-
-
-                    <div class="intel-grid">
-
-
-                        <div class="intel-item">
-
-                            <div class="intel-label">
-                                Threat Type
-                            </div>
-
-                            <div
-                                id="intelThreat"
-                                class="intel-value"
-                            >
-                                -
-                            </div>
-
-                        </div>
-
-
-                        <div class="intel-item">
-
-                            <div class="intel-label">
-                                Severity
-                            </div>
-
-                            <div
-                                id="intelSeverity"
-                                class="intel-value"
-                            >
-                                -
-                            </div>
-
-                        </div>
-
-
-                        <div class="intel-item">
-
-                            <div class="intel-label">
-                                IOC Type
-                            </div>
-
-                            <div
-                                id="intelType"
-                                class="intel-value"
-                            >
-                                -
-                            </div>
-
-                        </div>
-
-
-                        <div class="intel-item">
-
-                            <div class="intel-label">
-                                Intelligence Source
-                            </div>
-
-                            <div
-                                id="intelSource"
-                                class="intel-value"
-                            >
-                                -
-                            </div>
-
-                        </div>
-
-
-                    </div>
-
-
-                    <div class="summary">
-
-                        <div class="summary-title">
-                            THREAT DESCRIPTION
-                        </div>
-
-                        <div
-                            id="intelDescription"
-                            class="summary-text"
-                        ></div>
-
-                    </div>
-
-
-                </div>
-
-
-                <div
-                    id="noThreatIntel"
-                    class="no-threat"
-                >
-                    ✓ No matching IOC found in SentinelX Local Threat Intelligence.
-                </div>
-
 
             </div>
 
-        </section>
+        </div>
 
 
-        <!-- QUICK ACCESS -->
+        <!-- SEVERITY -->
 
-        <section class="links">
+        <div class="panel">
+
+            <div class="panel-title">
+                Threat Severity
+            </div>
+
+            <div class="panel-subtitle">
+                Distribution across analyzed indicators.
+            </div>
 
 
-            <a
-                href="/history"
-                class="link-card"
-            >
+            <div class="bars">
 
-                <div class="link-title">
-                    ◷ Scan History
+                <div class="bar-row">
+
+                    <span>
+                        Critical
+                    </span>
+
+                    <div class="bar">
+                        <div
+                            class="bar-fill"
+                            id="criticalBar"
+                        ></div>
+                    </div>
+
+                    <span id="criticalCount">
+                        0
+                    </span>
+
                 </div>
 
-                <div class="link-description">
-                    Review previous IOC analyses, risk scores, decisions and detection indicators.
+
+                <div class="bar-row">
+
+                    <span>
+                        High
+                    </span>
+
+                    <div class="bar">
+                        <div
+                            class="bar-fill"
+                            id="highBar"
+                        ></div>
+                    </div>
+
+                    <span id="highCount">
+                        0
+                    </span>
+
                 </div>
 
-            </a>
 
+                <div class="bar-row">
 
-            <a
-                href="/incidents"
-                class="link-card"
-            >
+                    <span>
+                        Medium
+                    </span>
 
-                <div class="link-title">
-                    ⚠ Incident Management
+                    <div class="bar">
+                        <div
+                            class="bar-fill"
+                            id="mediumBar"
+                        ></div>
+                    </div>
+
+                    <span id="mediumCount">
+                        0
+                    </span>
+
                 </div>
 
-                <div class="link-description">
-                    Investigate detected threats and manage incident status from Open to Resolved.
+
+                <div class="bar-row">
+
+                    <span>
+                        Low
+                    </span>
+
+                    <div class="bar">
+                        <div
+                            class="bar-fill"
+                            id="lowBar"
+                        ></div>
+                    </div>
+
+                    <span id="lowCount">
+                        0
+                    </span>
+
                 </div>
 
-            </a>
+            </div>
 
+        </div>
 
-        </section>
+    </section>
 
 
-    </main>
+    <!-- INCIDENT STATUS -->
 
+    <section class="panel">
 
-    <script>
+        <div class="panel-title">
+            Incident Operations
+        </div>
 
+        <div class="panel-subtitle">
+            Current incident lifecycle status.
+        </div>
 
-        async function analyzeIOC() {
 
+        <div class="incident-grid">
 
-            const input =
-                document.getElementById(
-                    "iocInput"
-                );
+            <div class="incident-box">
 
+                <small>
+                    OPEN
+                </small>
 
-            const button =
-                document.getElementById(
-                    "scanButton"
-                );
+                <strong id="incidentOpen">
+                    0
+                </strong>
 
+            </div>
 
-            const error =
-                document.getElementById(
-                    "scanError"
-                );
 
+            <div class="incident-box">
 
-            const result =
-                document.getElementById(
-                    "result"
-                );
+                <small>
+                    INVESTIGATING
+                </small>
 
+                <strong id="incidentInvestigating">
+                    0
+                </strong>
 
-            const ioc =
-                input.value.trim();
+            </div>
 
 
-            error.textContent = "";
+            <div class="incident-box">
 
+                <small>
+                    RESOLVED
+                </small>
 
-            if (!ioc) {
+                <strong id="incidentResolved">
+                    0
+                </strong>
 
-                error.textContent =
-                    "Please enter an IOC.";
+            </div>
 
-                return;
+        </div>
 
-            }
+    </section>
 
 
-            button.disabled = true;
+    <!-- QUICK LINKS -->
 
-            button.textContent =
-                "Analyzing...";
+    <div class="quick-links">
 
+        <a
+            href="/scanner"
+            class="quick-link"
+        >
 
-            try {
+            <strong>
+                Multi-IOC Scanner
+            </strong>
 
+            <span>
+                Analyze multiple indicators in one operation.
+            </span>
 
-                const response =
-                    await fetch(
-                        "/api/analyze",
-                        {
+        </a>
 
-                            method: "POST",
 
-                            headers: {
-                                "Content-Type":
-                                    "application/json"
-                            },
+        <a
+            href="/history"
+            class="quick-link"
+        >
 
-                            body: JSON.stringify({
-                                ioc: ioc
-                            })
+            <strong>
+                Scan History
+            </strong>
 
-                        }
-                    );
+            <span>
+                Review previously analyzed indicators.
+            </span>
 
+        </a>
 
-                const data =
-                    await response.json();
 
+        <a
+            href="/incidents"
+            class="quick-link"
+        >
 
-                if (!response.ok) {
+            <strong>
+                Incident Management
+            </strong>
 
-                    throw new Error(
-                        data.error ||
-                        "Analysis failed."
-                    );
+            <span>
+                Investigate and resolve security incidents.
+            </span>
 
-                }
+        </a>
 
+    </div>
 
-                result.style.display =
-                    "block";
+</main>
 
 
-                document.getElementById(
-                    "classification"
-                ).textContent =
-                    data.classification;
+<script>
 
+async function loadAnalytics() {
 
-                document.getElementById(
-                    "riskScore"
-                ).textContent =
-                    data.risk_score + "/100";
+    try {
 
+        const response =
+            await fetch("/api/analytics");
 
-                document.getElementById(
-                    "severity"
-                ).textContent =
-                    data.severity;
+        const data =
+            await response.json();
 
 
-                document.getElementById(
-                    "decision"
-                ).textContent =
-                    data.decision;
+        document.getElementById(
+            "totalScans"
+        ).textContent =
+            data.total_scans;
 
 
-                document.getElementById(
-                    "summary"
-                ).textContent =
-                    data.summary;
+        document.getElementById(
+            "threatsDetected"
+        ).textContent =
+            data.threats_detected;
 
 
-                const indicators =
-                    document.getElementById(
-                        "indicators"
-                    );
+        document.getElementById(
+            "alerts"
+        ).textContent =
+            data.alerts;
 
 
-                indicators.innerHTML = "";
+        document.getElementById(
+            "openIncidents"
+        ).textContent =
+            data.incident_counts.open;
 
 
-                if (
-                    data.indicators &&
-                    data.indicators.length
-                ) {
+        document.getElementById(
+            "averageRisk"
+        ).textContent =
+            data.average_risk;
 
 
-                    data.indicators.forEach(
-                        item => {
+        const severity =
+            data.severity_counts;
 
-                            const div =
-                                document.createElement(
-                                    "div"
-                                );
 
+        document.getElementById(
+            "criticalCount"
+        ).textContent =
+            severity.CRITICAL;
 
-                            div.className =
-                                "indicator";
 
+        document.getElementById(
+            "highCount"
+        ).textContent =
+            severity.HIGH;
 
-                            div.textContent =
-                                "• " + item;
 
+        document.getElementById(
+            "mediumCount"
+        ).textContent =
+            severity.MEDIUM;
 
-                            indicators.appendChild(
-                                div
-                            );
 
-                        }
-                    );
+        document.getElementById(
+            "lowCount"
+        ).textContent =
+            severity.LOW;
 
 
-                } else {
+        const total =
+            data.total_scans || 1;
 
-                    indicators.innerHTML =
-                        '<div class="indicator">No major suspicious indicators detected.</div>';
 
-                }
+        document.getElementById(
+            "criticalBar"
+        ).style.width =
+            (severity.CRITICAL / total * 100) + "%";
 
 
-                // THREAT INTELLIGENCE
+        document.getElementById(
+            "highBar"
+        ).style.width =
+            (severity.HIGH / total * 100) + "%";
 
-                const threatIntel =
-                    document.getElementById(
-                        "threatIntel"
-                    );
 
+        document.getElementById(
+            "mediumBar"
+        ).style.width =
+            (severity.MEDIUM / total * 100) + "%";
 
-                const noThreatIntel =
-                    document.getElementById(
-                        "noThreatIntel"
-                    );
 
+        document.getElementById(
+            "lowBar"
+        ).style.width =
+            (severity.LOW / total * 100) + "%";
 
-                const intel =
-                    data.threat_intelligence;
 
+        document.getElementById(
+            "incidentOpen"
+        ).textContent =
+            data.incident_counts.open;
 
-                if (
-                    intel &&
-                    intel.found
-                ) {
 
+        document.getElementById(
+            "incidentInvestigating"
+        ).textContent =
+            data.incident_counts.investigating;
 
-                    threatIntel.style.display =
-                        "block";
 
+        document.getElementById(
+            "incidentResolved"
+        ).textContent =
+            data.incident_counts.resolved;
 
-                    noThreatIntel.style.display =
-                        "none";
+    }
 
+    catch (error) {
 
-                    document.getElementById(
-                        "intelThreat"
-                    ).textContent =
-                        intel.threat || "-";
+        console.error(
+            "Analytics error:",
+            error
+        );
 
+    }
 
-                    document.getElementById(
-                        "intelSeverity"
-                    ).textContent =
-                        intel.severity || "-";
+}
 
 
-                    document.getElementById(
-                        "intelType"
-                    ).textContent =
-                        intel.type || "-";
+async function analyzeIOC() {
 
+    const input =
+        document.getElementById(
+            "iocInput"
+        );
 
-                    document.getElementById(
-                        "intelSource"
-                    ).textContent =
-                        intel.source || "-";
+    const errorBox =
+        document.getElementById(
+            "error"
+        );
 
+    const result =
+        document.getElementById(
+            "result"
+        );
 
-                    document.getElementById(
-                        "intelDescription"
-                    ).textContent =
-                        intel.description || "-";
 
+    const ioc =
+        input.value.trim();
 
-                } else {
 
+    errorBox.textContent = "";
 
-                    threatIntel.style.display =
-                        "none";
 
+    if (!ioc) {
 
-                    noThreatIntel.style.display =
-                        "block";
+        errorBox.textContent =
+            "Please enter an IOC.";
 
-                }
+        return;
 
+    }
 
-                await loadScanStats();
 
-                await loadIncidentCount();
+    try {
 
+        const response =
+            await fetch(
+                "/api/analyze",
+                {
+                    method: "POST",
 
-            }
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
 
-
-            catch (err) {
-
-                error.textContent =
-                    err.message;
-
-            }
-
-
-            finally {
-
-                button.disabled =
-                    false;
-
-                button.textContent =
-                    "Analyze IOC";
-
-            }
-
-        }
-
-
-        async function loadScanStats() {
-
-
-            try {
-
-
-                const response =
-                    await fetch(
-                        "/api/history"
-                    );
-
-
-                const history =
-                    await response.json();
-
-
-                document.getElementById(
-                    "totalScans"
-                ).textContent =
-                    history.length;
-
-
-                const threats =
-                    history.filter(
-                        scan =>
-                            scan.risk_score >= 50
-                    ).length;
-
-
-                document.getElementById(
-                    "threatsDetected"
-                ).textContent =
-                    threats;
-
-
-            }
-
-            catch (error) {
-
-                console.error(error);
-
-            }
-
-        }
-
-
-        async function loadIncidentCount() {
-
-
-            try {
-
-
-                const response =
-                    await fetch(
-                        "/api/incidents"
-                    );
-
-
-                const incidents =
-                    await response.json();
-
-
-                const open =
-                    incidents.filter(
-                        incident =>
-                            incident.status === "OPEN"
-                    ).length;
-
-
-                document.getElementById(
-                    "openIncidents"
-                ).textContent =
-                    open;
-
-
-            }
-
-            catch (error) {
-
-                console.error(error);
-
-            }
-
-        }
-
-
-        document
-            .getElementById("iocInput")
-            .addEventListener(
-                "keydown",
-                function(event) {
-
-                    if (
-                        event.key === "Enter"
-                    ) {
-
-                        analyzeIOC();
-
-                    }
-
+                    body:
+                        JSON.stringify({
+                            ioc: ioc
+                        })
                 }
             );
 
 
-        loadScanStats();
+        const data =
+            await response.json();
 
-        loadIncidentCount();
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.error ||
+                "Analysis failed"
+            );
+
+        }
 
 
-    </script>
+        document.getElementById(
+            "classification"
+        ).textContent =
+            data.classification;
+
+
+        document.getElementById(
+            "riskScore"
+        ).textContent =
+            data.risk_score + "/100";
+
+
+        document.getElementById(
+            "severity"
+        ).textContent =
+            data.severity;
+
+
+        document.getElementById(
+            "decision"
+        ).textContent =
+            data.decision;
+
+
+        document.getElementById(
+            "summary"
+        ).textContent =
+            data.summary;
+
+
+        result.style.display =
+            "block";
+
+
+        loadAnalytics();
+
+    }
+
+    catch (error) {
+
+        errorBox.textContent =
+            error.message;
+
+    }
+
+}
+
+
+loadAnalytics();
+
+</script>
 
 
 </body>
