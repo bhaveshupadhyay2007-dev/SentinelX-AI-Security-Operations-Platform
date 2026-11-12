@@ -3,3 +3,9 @@ __pycache__/
 *.pyc
 data/scan_history.json
 data/incidents.json
+
+# ML source datasets
+ml/source_data/
+
+# Trained ML model
+ml/url_threat_model.joblib

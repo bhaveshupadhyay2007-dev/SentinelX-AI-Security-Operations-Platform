@@ -1,9 +1,12 @@
-﻿from flask import Flask, render_template, request, jsonify
+﻿from flask import Flask, jsonify, render_template, request
 
 from engine.detector import analyze_ioc
 from engine.risk_engine import calculate_risk
 from engine.explainability import generate_explanation
 from engine.threat_intelligence import lookup_ioc
+from engine.trusted_domains import is_trusted_domain
+
+from ml.predictor import predict_url
 
 from scan_history import save_scan, get_scan_history
 
@@ -44,61 +47,258 @@ def analyze():
             "error": "IOC is required"
         }), 400
 
-    # Detection Engine
+    # =========================================
+    # 1. RULE-BASED DETECTION
+    # =========================================
+
     detection = analyze_ioc(ioc)
 
-    # Risk Engine
+    # =========================================
+    # 2. MACHINE LEARNING PREDICTION
+    # =========================================
+
+    try:
+
+        ml_result = predict_url(ioc)
+
+    except Exception as error:
+
+        ml_result = {
+            "prediction": -1,
+            "classification": "UNAVAILABLE",
+            "confidence": 0,
+            "error": str(error)
+        }
+
+    # =========================================
+    # 3. TRUSTED DOMAIN CONTEXT
+    # =========================================
+
+    trusted_domain = is_trusted_domain(ioc)
+
+    # =========================================
+    # 4. RULE ENGINE RISK
+    # =========================================
+
     risk = calculate_risk(detection)
 
-    # Explainability Engine
+    rule_score = risk["risk_score"]
+
+    # =========================================
+    # 5. ML RISK SCORE
+    # =========================================
+
+    ml_score = 0
+
+    if ml_result["prediction"] == 1:
+
+        ml_score = ml_result["confidence"]
+
+    elif ml_result["prediction"] == 0:
+
+        ml_score = 100 - ml_result["confidence"]
+
+    # =========================================
+    # 6. HYBRID RISK
+    # =========================================
+
+    hybrid_score = round(
+        (rule_score * 0.60) +
+        (ml_score * 0.40)
+    )
+
+    # =========================================
+    # 7. TRUSTED DOMAIN MITIGATION
+    # =========================================
+
+    trusted_domain_adjustment = False
+
+    if trusted_domain:
+
+        if detection["classification"] == "BENIGN":
+
+            hybrid_score = min(
+                hybrid_score,
+                10
+            )
+
+            trusted_domain_adjustment = True
+
+    hybrid_score = min(
+        max(hybrid_score, 0),
+        100
+    )
+
+    # =========================================
+    # 8. FINAL SEVERITY
+    # =========================================
+
+    if hybrid_score >= 80:
+
+        final_severity = "CRITICAL"
+
+    elif hybrid_score >= 60:
+
+        final_severity = "HIGH"
+
+    elif hybrid_score >= 30:
+
+        final_severity = "MEDIUM"
+
+    else:
+
+        final_severity = "LOW"
+
+    # =========================================
+    # 9. FINAL DECISION
+    # =========================================
+
+    if hybrid_score >= 80:
+
+        final_decision = "BLOCK"
+
+    elif hybrid_score >= 30:
+
+        final_decision = "ALERT"
+
+    else:
+
+        final_decision = "ALLOW"
+
+    # =========================================
+    # 10. FINAL CLASSIFICATION
+    # =========================================
+
+    if final_decision == "BLOCK":
+
+        final_classification = "MALICIOUS"
+
+    elif final_decision == "ALERT":
+
+        final_classification = "SUSPICIOUS"
+
+    else:
+
+        final_classification = "BENIGN"
+
+    # =========================================
+    # 11. UPDATE RISK RESULT
+    # =========================================
+
+    risk["risk_score"] = hybrid_score
+    risk["severity"] = final_severity
+    risk["decision"] = final_decision
+
+    # =========================================
+    # 12. EXPLAINABILITY
+    # =========================================
+
     explanation = generate_explanation(
         detection,
         risk
     )
 
-    # Threat Intelligence Lookup
+    if trusted_domain:
+
+        explanation["indicators"].append(
+            "Trusted domain context detected."
+        )
+
+        if trusted_domain_adjustment:
+
+            explanation["indicators"].append(
+                "ML false-positive risk reduced using trusted-domain context."
+            )
+
+    # =========================================
+    # 13. THREAT INTELLIGENCE
+    # =========================================
+
     threat_intelligence = lookup_ioc(ioc)
 
-    # Save scan history
+    # =========================================
+    # 14. SAVE SCAN HISTORY
+    # =========================================
+
     save_scan(
         ioc,
-        detection,
+        {
+            **detection,
+            "classification": final_classification
+        },
         risk,
         explanation
     )
 
+    # =========================================
+    # 15. CREATE INCIDENT
+    # =========================================
+
     incident = None
 
-    if risk["risk_score"] >= 50:
+    if hybrid_score >= 30:
 
         incident = create_incident(
             ioc,
-            detection,
+            {
+                **detection,
+                "classification": final_classification
+            },
             risk,
             explanation
         )
 
+    # =========================================
+    # 16. FINAL API RESPONSE
+    # =========================================
+
     return jsonify({
 
-        "ioc": ioc,
+        "ioc":
+            ioc,
 
         "classification":
-            detection["classification"],
+            final_classification,
 
         "risk_score":
-            risk["risk_score"],
+            hybrid_score,
 
         "severity":
-            risk["severity"],
+            final_severity,
 
         "decision":
-            risk["decision"],
+            final_decision,
 
         "indicators":
             explanation["indicators"],
 
         "summary":
             explanation["summary"],
+
+        "ml_analysis": {
+
+            "prediction":
+                ml_result["prediction"],
+
+            "classification":
+                ml_result["classification"],
+
+            "confidence":
+                ml_result["confidence"]
+
+        },
+
+        "rule_engine_score":
+            rule_score,
+
+        "ml_score":
+            round(ml_score, 2),
+
+        "trusted_domain":
+            trusted_domain,
+
+        "trusted_domain_adjustment":
+            trusted_domain_adjustment,
 
         "threat_intelligence":
             threat_intelligence,
@@ -109,6 +309,10 @@ def analyze():
     })
 
 
+# =============================================
+# SCAN HISTORY API
+# =============================================
+
 @app.route("/api/history", methods=["GET"])
 def history():
 
@@ -116,6 +320,10 @@ def history():
         get_scan_history()
     )
 
+
+# =============================================
+# ANALYTICS API
+# =============================================
 
 @app.route("/api/analytics", methods=["GET"])
 def analytics():
@@ -167,6 +375,7 @@ def analytics():
         )
 
         if severity in severity_counts:
+
             severity_counts[severity] += 1
 
     open_incidents = sum(
@@ -238,10 +447,21 @@ def analytics():
     })
 
 
+# =============================================
+# INCIDENT MANAGEMENT PAGE
+# =============================================
+
 @app.route("/incidents")
 def incidents_page():
-    return render_template("incidents.html")
 
+    return render_template(
+        "incidents.html"
+    )
+
+
+# =============================================
+# INCIDENTS API
+# =============================================
 
 @app.route("/api/incidents", methods=["GET"])
 def incidents():
@@ -250,6 +470,10 @@ def incidents():
         get_incidents()
     )
 
+
+# =============================================
+# UPDATE INCIDENT STATUS
+# =============================================
 
 @app.route(
     "/api/incidents/<incident_id>/status",
@@ -278,6 +502,10 @@ def change_incident_status(incident_id):
 
     return jsonify(incident)
 
+
+# =============================================
+# APPLICATION START
+# =============================================
 
 if __name__ == "__main__":
 

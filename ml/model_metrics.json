@@ -1,0 +1,35 @@
+{
+    "dataset": {
+        "public_rows": 60000,
+        "trusted_rows": 30,
+        "combined_rows": 60030,
+        "failed_rows": 0
+    },
+    "model": {
+        "algorithm": "RandomForestClassifier",
+        "estimators": 300,
+        "features": 17
+    },
+    "evaluation": {
+        "accuracy": 0.8731,
+        "precision": 0.8749,
+        "recall": 0.8707,
+        "f1": 0.8728,
+        "roc_auc": 0.9428
+    },
+    "trusted_validation": {
+        "total": 30,
+        "correct": 26,
+        "accuracy_percent": 86.67
+    },
+    "confusion_matrix": [
+        [
+            5259,
+            747
+        ],
+        [
+            776,
+            5224
+        ]
+    ]
+}

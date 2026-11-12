@@ -1,0 +1,16 @@
+{
+    "source_rows": 651191,
+    "clean_benign_rows": 428080,
+    "clean_malicious_rows": 213039,
+    "duplicates_removed": 10072,
+    "final_rows": 60000,
+    "final_benign": 30000,
+    "final_malicious": 30000,
+    "random_state": 42,
+    "label_mapping": {
+        "benign": 0,
+        "defacement": 1,
+        "phishing": 1,
+        "malware": 1
+    }
+}
