@@ -22,6 +22,11 @@ def dashboard():
     return render_template("dashboard.html")
 
 
+@app.route("/scanner")
+def scanner_page():
+    return render_template("scanner.html")
+
+
 @app.route("/history")
 def history_page():
     return render_template("history.html")
