@@ -1,0 +1,26 @@
+﻿[
+    {
+        "ioc": "http://verify-user-account.top/password",
+        "type": "URL",
+        "threat": "Phishing",
+        "severity": "HIGH",
+        "source": "SentinelX Local Threat Intelligence",
+        "description": "Known phishing-style IOC containing credential verification indicators."
+    },
+    {
+        "ioc": "http://secure-login-account.xyz/verify",
+        "type": "URL",
+        "threat": "Credential Theft",
+        "severity": "HIGH",
+        "source": "SentinelX Local Threat Intelligence",
+        "description": "Suspicious authentication-themed URL associated with credential harvesting patterns."
+    },
+    {
+        "ioc": "http://payment-confirmation.top/login",
+        "type": "URL",
+        "threat": "Phishing",
+        "severity": "HIGH",
+        "source": "SentinelX Local Threat Intelligence",
+        "description": "Suspicious payment and login themed URL."
+    }
+]

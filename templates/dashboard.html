@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        SentinelX | Security Operations Center
+    </title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: #07111f;
+
+            color: #e5e7eb;
+
+            min-height: 100vh;
+
+        }
+
+
+        .header {
+
+            background: #0b1628;
+
+            border-bottom:
+                1px solid #1e293b;
+
+            padding:
+                20px 40px;
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+
+        }
+
+
+        .logo {
+
+            font-size: 25px;
+
+            font-weight: bold;
+
+            color: #38bdf8;
+
+        }
+
+
+        .subtitle {
+
+            color: #94a3b8;
+
+            font-size: 13px;
+
+            margin-top: 4px;
+
+        }
+
+
+        .header-right {
+
+            text-align: right;
+
+        }
+
+
+        .system-status {
+
+            color: #4ade80;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+        }
+
+
+        .nav {
+
+            margin-top: 8px;
+
+        }
+
+
+        .nav a {
+
+            color: #cbd5e1;
+
+            text-decoration: none;
+
+            margin-left: 20px;
+
+            font-size: 13px;
+
+        }
+
+
+        .nav a:hover {
+
+            color: #38bdf8;
+
+        }
+
+
+        .container {
+
+            width: 92%;
+
+            max-width: 1400px;
+
+            margin: 35px auto;
+
+        }
+
+
+        .stats {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 18px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .stat-card {
+
+            background: #0b1628;
+
+            border:
+                1px solid #1e293b;
+
+            border-radius: 12px;
+
+            padding: 22px;
+
+        }
+
+
+        .stat-label {
+
+            color: #94a3b8;
+
+            font-size: 12px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .stat-value {
+
+            font-size: 28px;
+
+            font-weight: bold;
+
+        }
+
+
+        .blue {
+            color: #38bdf8;
+        }
+
+
+        .red {
+            color: #ef4444;
+        }
+
+
+        .yellow {
+            color: #facc15;
+        }
+
+
+        .green {
+            color: #4ade80;
+        }
+
+
+        .card {
+
+            background: #0b1628;
+
+            border:
+                1px solid #1e293b;
+
+            border-radius: 12px;
+
+            padding: 25px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .card-title {
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .scanner {
+
+            display: flex;
+
+            gap: 12px;
+
+        }
+
+
+        .scanner input {
+
+            flex: 1;
+
+            background: #07111f;
+
+            border:
+                1px solid #334155;
+
+            color: #e5e7eb;
+
+            padding:
+                14px 16px;
+
+            border-radius: 8px;
+
+            font-size: 14px;
+
+            outline: none;
+
+        }
+
+
+        .scanner input:focus {
+
+            border-color:
+                #38bdf8;
+
+        }
+
+
+        .scan-button {
+
+            background: #0284c7;
+
+            border: none;
+
+            color: white;
+
+            padding:
+                14px 24px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+        }
+
+
+        .scan-button:hover {
+
+            background: #0369a1;
+
+        }
+
+
+        .scan-button:disabled {
+
+            opacity: 0.6;
+
+            cursor: wait;
+
+        }
+
+
+        .result {
+
+            display: none;
+
+            margin-top: 25px;
+
+        }
+
+
+        .result-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 15px;
+
+        }
+
+
+        .result-item {
+
+            background: #07111f;
+
+            border:
+                1px solid #1e293b;
+
+            border-radius: 8px;
+
+            padding: 16px;
+
+        }
+
+
+        .result-label {
+
+            color: #64748b;
+
+            font-size: 11px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 7px;
+
+        }
+
+
+        .result-value {
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+        }
+
+
+        .summary {
+
+            margin-top: 18px;
+
+            background: #07111f;
+
+            border:
+                1px solid #1e293b;
+
+            border-radius: 8px;
+
+            padding: 18px;
+
+        }
+
+
+        .summary-title {
+
+            color: #94a3b8;
+
+            font-size: 12px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .summary-text {
+
+            color: #cbd5e1;
+
+            line-height: 1.6;
+
+        }
+
+
+        .indicators {
+
+            margin-top: 18px;
+
+        }
+
+
+        .indicator {
+
+            padding: 10px 12px;
+
+            margin-bottom: 7px;
+
+            background: #111e32;
+
+            border-radius: 6px;
+
+            color: #cbd5e1;
+
+            font-size: 13px;
+
+        }
+
+
+        .threat-intel {
+
+            display: none;
+
+            margin-top: 20px;
+
+            border:
+                1px solid #ef4444;
+
+            background:
+                rgba(127, 29, 29, 0.20);
+
+            border-radius: 10px;
+
+            padding: 20px;
+
+        }
+
+
+        .intel-title {
+
+            color: #ef4444;
+
+            font-weight: bold;
+
+            font-size: 16px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .intel-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 12px;
+
+        }
+
+
+        .intel-item {
+
+            background:
+                rgba(7, 17, 31, 0.8);
+
+            border:
+                1px solid #334155;
+
+            border-radius: 7px;
+
+            padding: 13px;
+
+        }
+
+
+        .intel-label {
+
+            color: #64748b;
+
+            font-size: 11px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .intel-value {
+
+            color: #e5e7eb;
+
+            font-size: 13px;
+
+        }
+
+
+        .no-threat {
+
+            display: none;
+
+            margin-top: 20px;
+
+            background:
+                rgba(20, 83, 45, 0.18);
+
+            border:
+                1px solid #166534;
+
+            border-radius: 10px;
+
+            padding: 17px;
+
+            color: #4ade80;
+
+            font-size: 14px;
+
+        }
+
+
+        .links {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 18px;
+
+        }
+
+
+        .link-card {
+
+            background: #0b1628;
+
+            border:
+                1px solid #1e293b;
+
+            border-radius: 12px;
+
+            padding: 22px;
+
+            text-decoration: none;
+
+            color: #e5e7eb;
+
+            transition: 0.2s;
+
+        }
+
+
+        .link-card:hover {
+
+            border-color:
+                #38bdf8;
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        .link-title {
+
+            color: #38bdf8;
+
+            font-weight: bold;
+
+            margin-bottom: 7px;
+
+        }
+
+
+        .link-description {
+
+            color: #94a3b8;
+
+            font-size: 13px;
+
+        }
+
+
+        .error {
+
+            margin-top: 15px;
+
+            color: #ef4444;
+
+            font-size: 13px;
+
+        }
+
+
+        @media (max-width: 900px) {
+
+            .stats {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+
+            .result-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+        }
+
+
+        @media (max-width: 650px) {
+
+            .header {
+
+                padding:
+                    18px 20px;
+
+            }
+
+
+            .header-right {
+
+                display: none;
+
+            }
+
+
+            .container {
+
+                width: 95%;
+
+            }
+
+
+            .stats {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .scanner {
+
+                flex-direction: column;
+
+            }
+
+
+            .result-grid {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .intel-grid {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .links {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <header class="header">
+
+        <div>
+
+            <div class="logo">
+                ◈ SentinelX
+            </div>
+
+            <div class="subtitle">
+                AI-Powered Security Operations & Threat Detection Platform
+            </div>
+
+        </div>
+
+
+        <div class="header-right">
+
+            <div class="system-status">
+                ● Detection Engine Online
+            </div>
+
+
+            <nav class="nav">
+
+                <a href="/">
+                    Dashboard
+                </a>
+
+                <a href="/history">
+                    Scan History
+                </a>
+
+                <a href="/incidents">
+                    Incidents
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <main class="container">
+
+
+        <!-- STATISTICS -->
+
+        <section class="stats">
+
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    TOTAL SCANS
+                </div>
+
+                <div
+                    id="totalScans"
+                    class="stat-value blue"
+                >
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    THREATS DETECTED
+                </div>
+
+                <div
+                    id="threatsDetected"
+                    class="stat-value red"
+                >
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    OPEN INCIDENTS
+                </div>
+
+                <div
+                    id="openIncidents"
+                    class="stat-value yellow"
+                >
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    SYSTEM STATUS
+                </div>
+
+                <div class="stat-value green">
+                    ONLINE
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- SCANNER -->
+
+        <section class="card">
+
+
+            <div class="card-title">
+                IOC Security Scanner
+            </div>
+
+
+            <div class="scanner">
+
+                <input
+                    id="iocInput"
+                    type="text"
+                    placeholder="Enter URL, IP address, domain or other IOC..."
+                >
+
+
+                <button
+                    id="scanButton"
+                    class="scan-button"
+                    onclick="analyzeIOC()"
+                >
+                    Analyze IOC
+                </button>
+
+            </div>
+
+
+            <div
+                id="scanError"
+                class="error"
+            ></div>
+
+
+            <!-- RESULT -->
+
+            <div
+                id="result"
+                class="result"
+            >
+
+
+                <div class="result-grid">
+
+
+                    <div class="result-item">
+
+                        <div class="result-label">
+                            Classification
+                        </div>
+
+                        <div
+                            id="classification"
+                            class="result-value"
+                        >
+                            -
+                        </div>
+
+                    </div>
+
+
+                    <div class="result-item">
+
+                        <div class="result-label">
+                            Risk Score
+                        </div>
+
+                        <div
+                            id="riskScore"
+                            class="result-value"
+                        >
+                            -
+                        </div>
+
+                    </div>
+
+
+                    <div class="result-item">
+
+                        <div class="result-label">
+                            Severity
+                        </div>
+
+                        <div
+                            id="severity"
+                            class="result-value"
+                        >
+                            -
+                        </div>
+
+                    </div>
+
+
+                    <div class="result-item">
+
+                        <div class="result-label">
+                            Decision
+                        </div>
+
+                        <div
+                            id="decision"
+                            class="result-value"
+                        >
+                            -
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- SUMMARY -->
+
+                <div class="summary">
+
+                    <div class="summary-title">
+                        ANALYSIS SUMMARY
+                    </div>
+
+                    <div
+                        id="summary"
+                        class="summary-text"
+                    ></div>
+
+                </div>
+
+
+                <!-- INDICATORS -->
+
+                <div class="indicators">
+
+                    <div class="summary-title">
+                        WHY WAS IT FLAGGED?
+                    </div>
+
+                    <div id="indicators"></div>
+
+                </div>
+
+
+                <!-- THREAT INTELLIGENCE -->
+
+                <div
+                    id="threatIntel"
+                    class="threat-intel"
+                >
+
+                    <div class="intel-title">
+                        ⚠ KNOWN THREAT DETECTED
+                    </div>
+
+
+                    <div class="intel-grid">
+
+
+                        <div class="intel-item">
+
+                            <div class="intel-label">
+                                Threat Type
+                            </div>
+
+                            <div
+                                id="intelThreat"
+                                class="intel-value"
+                            >
+                                -
+                            </div>
+
+                        </div>
+
+
+                        <div class="intel-item">
+
+                            <div class="intel-label">
+                                Severity
+                            </div>
+
+                            <div
+                                id="intelSeverity"
+                                class="intel-value"
+                            >
+                                -
+                            </div>
+
+                        </div>
+
+
+                        <div class="intel-item">
+
+                            <div class="intel-label">
+                                IOC Type
+                            </div>
+
+                            <div
+                                id="intelType"
+                                class="intel-value"
+                            >
+                                -
+                            </div>
+
+                        </div>
+
+
+                        <div class="intel-item">
+
+                            <div class="intel-label">
+                                Intelligence Source
+                            </div>
+
+                            <div
+                                id="intelSource"
+                                class="intel-value"
+                            >
+                                -
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="summary">
+
+                        <div class="summary-title">
+                            THREAT DESCRIPTION
+                        </div>
+
+                        <div
+                            id="intelDescription"
+                            class="summary-text"
+                        ></div>
+
+                    </div>
+
+
+                </div>
+
+
+                <div
+                    id="noThreatIntel"
+                    class="no-threat"
+                >
+                    ✓ No matching IOC found in SentinelX Local Threat Intelligence.
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- QUICK ACCESS -->
+
+        <section class="links">
+
+
+            <a
+                href="/history"
+                class="link-card"
+            >
+
+                <div class="link-title">
+                    ◷ Scan History
+                </div>
+
+                <div class="link-description">
+                    Review previous IOC analyses, risk scores, decisions and detection indicators.
+                </div>
+
+            </a>
+
+
+            <a
+                href="/incidents"
+                class="link-card"
+            >
+
+                <div class="link-title">
+                    ⚠ Incident Management
+                </div>
+
+                <div class="link-description">
+                    Investigate detected threats and manage incident status from Open to Resolved.
+                </div>
+
+            </a>
+
+
+        </section>
+
+
+    </main>
+
+
+    <script>
+
+
+        async function analyzeIOC() {
+
+
+            const input =
+                document.getElementById(
+                    "iocInput"
+                );
+
+
+            const button =
+                document.getElementById(
+                    "scanButton"
+                );
+
+
+            const error =
+                document.getElementById(
+                    "scanError"
+                );
+
+
+            const result =
+                document.getElementById(
+                    "result"
+                );
+
+
+            const ioc =
+                input.value.trim();
+
+
+            error.textContent = "";
+
+
+            if (!ioc) {
+
+                error.textContent =
+                    "Please enter an IOC.";
+
+                return;
+
+            }
+
+
+            button.disabled = true;
+
+            button.textContent =
+                "Analyzing...";
+
+
+            try {
+
+
+                const response =
+                    await fetch(
+                        "/api/analyze",
+                        {
+
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body: JSON.stringify({
+                                ioc: ioc
+                            })
+
+                        }
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        data.error ||
+                        "Analysis failed."
+                    );
+
+                }
+
+
+                result.style.display =
+                    "block";
+
+
+                document.getElementById(
+                    "classification"
+                ).textContent =
+                    data.classification;
+
+
+                document.getElementById(
+                    "riskScore"
+                ).textContent =
+                    data.risk_score + "/100";
+
+
+                document.getElementById(
+                    "severity"
+                ).textContent =
+                    data.severity;
+
+
+                document.getElementById(
+                    "decision"
+                ).textContent =
+                    data.decision;
+
+
+                document.getElementById(
+                    "summary"
+                ).textContent =
+                    data.summary;
+
+
+                const indicators =
+                    document.getElementById(
+                        "indicators"
+                    );
+
+
+                indicators.innerHTML = "";
+
+
+                if (
+                    data.indicators &&
+                    data.indicators.length
+                ) {
+
+
+                    data.indicators.forEach(
+                        item => {
+
+                            const div =
+                                document.createElement(
+                                    "div"
+                                );
+
+
+                            div.className =
+                                "indicator";
+
+
+                            div.textContent =
+                                "• " + item;
+
+
+                            indicators.appendChild(
+                                div
+                            );
+
+                        }
+                    );
+
+
+                } else {
+
+                    indicators.innerHTML =
+                        '<div class="indicator">No major suspicious indicators detected.</div>';
+
+                }
+
+
+                // THREAT INTELLIGENCE
+
+                const threatIntel =
+                    document.getElementById(
+                        "threatIntel"
+                    );
+
+
+                const noThreatIntel =
+                    document.getElementById(
+                        "noThreatIntel"
+                    );
+
+
+                const intel =
+                    data.threat_intelligence;
+
+
+                if (
+                    intel &&
+                    intel.found
+                ) {
+
+
+                    threatIntel.style.display =
+                        "block";
+
+
+                    noThreatIntel.style.display =
+                        "none";
+
+
+                    document.getElementById(
+                        "intelThreat"
+                    ).textContent =
+                        intel.threat || "-";
+
+
+                    document.getElementById(
+                        "intelSeverity"
+                    ).textContent =
+                        intel.severity || "-";
+
+
+                    document.getElementById(
+                        "intelType"
+                    ).textContent =
+                        intel.type || "-";
+
+
+                    document.getElementById(
+                        "intelSource"
+                    ).textContent =
+                        intel.source || "-";
+
+
+                    document.getElementById(
+                        "intelDescription"
+                    ).textContent =
+                        intel.description || "-";
+
+
+                } else {
+
+
+                    threatIntel.style.display =
+                        "none";
+
+
+                    noThreatIntel.style.display =
+                        "block";
+
+                }
+
+
+                await loadScanStats();
+
+                await loadIncidentCount();
+
+
+            }
+
+
+            catch (err) {
+
+                error.textContent =
+                    err.message;
+
+            }
+
+
+            finally {
+
+                button.disabled =
+                    false;
+
+                button.textContent =
+                    "Analyze IOC";
+
+            }
+
+        }
+
+
+        async function loadScanStats() {
+
+
+            try {
+
+
+                const response =
+                    await fetch(
+                        "/api/history"
+                    );
+
+
+                const history =
+                    await response.json();
+
+
+                document.getElementById(
+                    "totalScans"
+                ).textContent =
+                    history.length;
+
+
+                const threats =
+                    history.filter(
+                        scan =>
+                            scan.risk_score >= 50
+                    ).length;
+
+
+                document.getElementById(
+                    "threatsDetected"
+                ).textContent =
+                    threats;
+
+
+            }
+
+            catch (error) {
+
+                console.error(error);
+
+            }
+
+        }
+
+
+        async function loadIncidentCount() {
+
+
+            try {
+
+
+                const response =
+                    await fetch(
+                        "/api/incidents"
+                    );
+
+
+                const incidents =
+                    await response.json();
+
+
+                const open =
+                    incidents.filter(
+                        incident =>
+                            incident.status === "OPEN"
+                    ).length;
+
+
+                document.getElementById(
+                    "openIncidents"
+                ).textContent =
+                    open;
+
+
+            }
+
+            catch (error) {
+
+                console.error(error);
+
+            }
+
+        }
+
+
+        document
+            .getElementById("iocInput")
+            .addEventListener(
+                "keydown",
+                function(event) {
+
+                    if (
+                        event.key === "Enter"
+                    ) {
+
+                        analyzeIOC();
+
+                    }
+
+                }
+            );
+
+
+        loadScanStats();
+
+        loadIncidentCount();
+
+
+    </script>
+
+
+</body>
+
+</html>
